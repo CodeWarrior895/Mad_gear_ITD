@@ -1,6 +1,7 @@
  package org.firstinspires.ftc.teamcode.Components;
 
  import com.qualcomm.robotcore.hardware.DcMotor;
+ import com.qualcomm.robotcore.hardware.DcMotorSimple;
  import com.qualcomm.robotcore.hardware.Gamepad;
  import org.firstinspires.ftc.robotcore.external.Telemetry;
  import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -53,6 +54,18 @@
          double rightY = gamepad1.right_stick_y;
 
          power(leftY, leftY, rightY, rightY);
+
+         if(gamepad1.dpad_up) {
+             power(-0.6,-0.6,-0.6,-0.6);
+         } else if (gamepad1.dpad_left) {
+             power(-0.6,-0.6,0.6,0.6);
+
+         } else if (gamepad1.dpad_right) {
+             power(0.6,0.6,-0.6,-0.6);
+
+         } else if (gamepad1.dpad_down) {
+             power(0.6,0.6,0.6,0.6);
+         }
 
 
          telemetry.addData("Motor Power", "LF: %.2f, LB: %.2f, RF: %.2f, RB: %.2f",
